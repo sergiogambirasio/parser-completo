@@ -1,0 +1,4 @@
+nome;cognome;datanascita;luogonascita;residenza_citta;residenza_indirizzo;residenza_cap;residenza_provincia;figlio_1_nome;figlio_1_eta;figlio_1_residenza_citta;figlio_1_residenza_indirizzo;figlio_2_nome;figlio_2_eta;figlio_3_nome;figlio_3_eta;animale_1_nome;animale_1_tipo;animale_2_nome;animale_2_tipo
+Alice;Bertocchi;2002-05-07;Alzano Lombardo;Nembro;Via Verdi 34;24027;Bergamo (BG);Charlie;25;Albino;Via Marconi 2;David;3;Andrew;16;Silvestro;Gatto;Scooby;Cane
+Bob;Sincler;1990-04-13;Seriate;Bergamo;Piazza Libertà, 1;24020;Bergamo (BG);Andrea;4;;;;;Snoopy;Cane;;
+Charlie;Chaplin;1948-10-16;Alzano Lombardo;Albino;Via Roma, 5;24021;Bergamo (BG);Eve;10;Frank;8;Samantha;23;dolphy;pesce

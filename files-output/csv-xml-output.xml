@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<persone>
+	<persona>
+		<nome>Alice</nome>
+		<cognome>Bertocchi</cognome>
+		<datanascita>2002-05-07</datanascita>
+		<luogonascita>Alzano Lombardo</luogonascita>
+		<main_residenza>
+			<citta>Nembro</citta>
+			<indirizzo>Via Verdi 34</indirizzo>
+			<cap>24027</cap>
+			<provincia>Bergamo (BG)</provincia>
+		</main_residenza>
+		<main_figlio>
+			<figlio1>
+				<nome>Charlie</nome>
+				<eta>25</eta>
+				<residenza>Albino</residenza>
+				<residenza>Via Marconi 2</residenza>
+			</figlio1>
