@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<persone>
+	<persona>
+		<id>1</id>
+		<nome>andrea</nome>
+		<cognome>balocco</cognome>
+		<annonascita>25-06-2002</annonascita>
+		<luogonascita>Alzano L.</luogonascita>
+	</persona>
+	<persona>
+		<id>2</id>
+		<nome>Maria</nome>
+		<cognome>Gualtieri</cognome>
+		<annonascita>14-07-1964</annonascita>
+		<luogonascita>Bergamo</luogonascita>
+	</persona>
+</persone>
