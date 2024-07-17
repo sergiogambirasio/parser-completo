@@ -23,13 +23,14 @@ def csv_to_xml(csv_file, xml_file, nodeHeader, nodeChild):
                 radice = df.columns[j].split('_')[0]
                 radici[radice].append(df.columns[j])
 
-            print(str(df.values[i]))
-
             countField = 0 #count per il prossimo campo da scrivere
 
             for radice, elementi in radici.items():
 
                 if len(elementi) > 1:
+
+                    print("maggiore")
+                    print(elementi)
 
                     f.write("\t" + "\t" + "<main_" + radice + ">" + "\n") #Sottonodo con ulteriori figli
                     radiciElementi = defaultdict(list)
@@ -37,55 +38,18 @@ def csv_to_xml(csv_file, xml_file, nodeHeader, nodeChild):
                     for e in range(len(elementi)):
                         radiciElementi[elementi[e].split('_')[1]].append(elementi[e]) #raggruppo tutti i sottonodi simili (con la stessa radice)
 
+                    print(radiciElementi)
+
                     countChild = 0 #count per il numero di sottonodi
 
-                    multiRadici = defaultdict(list)
-
-                    countMultiRadici = 0
+                    print("valore count " + str(countChild))
 
                     for re in radiciElementi.values():
-
                         if len(re) > 1:
 
-                            #future 1 --> gestire i sottonodi dei sottonodi precedenti (con la stessa radice)
-                            #future 2 --> gestire questo passaggio in modo ricorsivo, visto che potrei avere nodi infiniti
-
-                            multiRadiciInterni = defaultdict(list)
-
-                            countSplit = 0
-
-                            """for r in range(len(re)): #cerco quanti nodi delimitati da _ esistono, per sviluppare tutti i nodi
-                                
-                                if len(re[r].split('_')) > countSplit:
-                                    countSplit = len(re[r].split('_'))
-
-                            print("Massimo numero di nodi " + str(countSplit))
-
-                            numeroIniziale = 1
-                            for cs in range(countSplit):
-
-                                multiRadiciInterni[re[cs].split('_')[numeroIniziale + 1] + re[cs].split('_')[numeroIniziale]].append(re[cs])
-
-                            numeroIniziale += 1"""
-
-                            """for r in range(len(re)):
-                                #print(re[r])
-                                multiRadiciInterni[re[r].split('_')[2] + re[r].split('_')[1]].append(re[r])"""
-
-                            #print(multiRadiciInterni)
-
-                            multiRadici[countMultiRadici] = multiRadiciInterni
-
-                            countMultiRadici += 1
-
-                            print(multiRadici)
-
-                            print("---------")
-
-
-
-
-                            f.write("\t" + "\t" + "\t" + "<" + elementi[countChild].split('_')[0] + elementi[countChild].split('_')[1] + ">\n")
+                            #f.write("\t" + "\t" + "\t" + "<" + elementi[countChild].split('_')[0] + elementi[countChild].split('_')[1] + ">\n")
+                            #per risolvere il problema che in alcuni file viene tenuto il countchild precedente, utilizzo i valori di re
+                            f.write("\t" + "\t" + "\t" + "<" + re[0].split('_')[0] + re[0].split('_')[1] + ">\n")
 
                             #ogni volta viene controllato se il valore è nan (non presente), di conseguenza viene gestito nel momento in cui si inserisce nel xml file
 
@@ -106,11 +70,14 @@ def csv_to_xml(csv_file, xml_file, nodeHeader, nodeChild):
 
                                 countField += 1
 
-                            f.write("\t" + "\t" + "\t" + "</" + elementi[(countChild)].split('_')[0] + elementi[(countChild)].split('_')[1] + ">\n")
-
+                            #f.write("\t" + "\t" + "\t" + "</" + elementi[(countChild)].split('_')[0] + elementi[(countChild)].split('_')[1] + ">\n")
+                            #per risolvere il problema che in alcuni file viene tenuto il countchild precedente, utilizzo i valori di re
+                            f.write("\t" + "\t" + "\t" + "</" + re[0].split('_')[0] + re[0].split('_')[1] + ">\n")
+                            
                             countChild += 1
 
                         else:
+
                             for t in re:
                                 if str(df.values[i][countField]) == "nan":                                
                                     f.write("\t" + "\t" + "\t" + "<" + t.split('_')[1] + "></" + t.split('_')[1] + ">\n")
@@ -138,7 +105,7 @@ def csv_to_xml(csv_file, xml_file, nodeHeader, nodeChild):
 
 # Esempio di utilizzo
 csv_file = './files-input/01testcsv.csv' #codice temporaneo statico per il nome del file csv
-xml_file = './files-output/csv-xml-output.xml' #codice temporaneo statico per il nome del file xml
+xml_file = './files-output/01_csv-xml-output.xml' #codice temporaneo statico per il nome del file xml
 
 nodeHeader = "persone" #parte statica temporanea per recuperare il nodo header
 nodeChild = "persona" #parte statica temporanea per recuperare il nodo figlio
