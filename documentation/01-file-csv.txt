@@ -1,0 +1,23 @@
+APPUNTI SULLA CONFIGURAZIONE DI UN FILE CSV PER LA CORRETTA CONVERSIONE:
+Il file csv utilizza il delimitatore ";"
+
+Ciascun nodo equivale al testo dell'intestazione corrispondente.
+
+Per quanto riguarda i nodi con più elementi, viene aggiunto il prefisso main_ (attualmente l'unico modo che mi permetta di creare un sottogruppo contenente i nodi figli, generalizzando sul nodo plurale)
+es.
+
+<main_figlio>
+	<figlio1>
+	</figlio1>
+	<figlio2>
+	</figlio2>
+</main_figlio>
+
+Per identificare l'appartenenza di un nodo, prima vengono aggiunti i prefissi per individuare gli elementi uguali
+es.
+
+figlio_1_nome
+figlio_1_cognome
+
+figlio_2_nome
+figlio_2_cognome
