@@ -7,6 +7,7 @@ import shutil
 import os
 
 def esc(): #funzione di escape
+    print("Chiusura del programma...")
     sys.exit()
 
 def select_file_and_copy(destination_folder):
@@ -61,7 +62,7 @@ def csv_xml(): #da csv a xml
 
         file_senza_estensione, estensione_file = os.path.splitext(nome_file)
 
-        if estensione_file == "csv":
+        if estensione_file == ".csv":
             xml_file = './files-output/' + file_senza_estensione + '.xml' #codice temporaneo statico per il nome del file xml
 
             nodeHeader = "persone" #parte statica temporanea per recuperare il nodo header
@@ -89,13 +90,24 @@ def switch_case(case): #richiamo il dizionario di funzioni
 
 def main():
 
-    print("Benvenuto!\nEcco le conversioni possibili al momento:\n1) Da CSV a X.M.L\nDigita 0 per uscire")
-    scelta = input("Scegli la conversione che desideri ")
+    eseguire = True
+    continuare = 'S'
 
-    if not switch.__contains__(scelta): #se non è contenuto nel dizionario, richiamo la funzione e ritorno il messaggio
-        print(default_case())
+    while eseguire: #ciclo while che si interrompe quando non si vuole più proseguire
 
-    switch_case(scelta)
+        print("\nEcco le conversioni possibili al momento:\n1) Da CSV a X.M.L\nDigita 0 per uscire")
+        scelta = input("Scegli la conversione che desideri ")
+
+        if not switch.__contains__(scelta): #se non è contenuto nel dizionario, richiamo la funzione e ritorno il messaggio
+            print(default_case())
+
+        switch_case(scelta)
+    
+        continuare = input("Continuare? S/N ")
+
+        if continuare != 'S':
+            eseguire = False
+            print("Chiusura del programma...")
 
 if __name__ == "__main__":
     main()
